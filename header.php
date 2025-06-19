@@ -10,21 +10,21 @@
 </head>
 <body>
     <header class="header">
-        <div class="header__menu-list-wrapper">
-            <?php $menu = wp_nav_menu( [
-                        'theme_location' => 'header',
-                        'container'      => false,
-                        'menu_class'     => "menu-list",
-                        'menu_id'        => false,
-                        'echo'           => true,
-                        'items_wrap'     => '<ul id="%1$s" %2$s">%3$s</ul>',
-                    ] );
-                if($menu) : ?>
-
-                <nav>
-                    <?php echo $menu ?>	
-                </nav>
-
-            <?php endif; ?>    
+        <p>logo</p>
+        <div class="header__categories">
+            <nav class="category-nav">
+                <ul class="category-list">
+                    <?php
+                    wp_list_categories([
+                        'title_li' => '',
+                        'show_option_none' => '',
+                        'hide_empty' => false,
+                        'orderby' => 'name',
+                        'order' => 'ASC',
+                        'exclude' => get_cat_ID('Uncategorized'),
+                    ]);
+                    ?>
+                </ul>
+            </nav>
         </div>
     </header>

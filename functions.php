@@ -42,3 +42,16 @@ function wp_epc_menus()
 }
 
 add_action('init', 'wp_epc_menus');
+
+add_theme_support('post-thumbnails');
+
+function get_first_image_from_content() {
+    global $post;
+    $content = $post->post_content;
+
+    if ( preg_match('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches) ) {
+        return $matches[1];
+    }
+
+    return false;
+}

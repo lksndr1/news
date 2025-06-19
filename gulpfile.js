@@ -41,4 +41,4 @@ function watchFiles() {
 }
 
 export const watch = gulp.series(styles, scripts, watchFiles);
-export default gulp.series(styles, scripts);
+export default gulp.series(styles, scripts, watchFiles);
