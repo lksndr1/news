@@ -41,12 +41,19 @@
                     </nav>
                 </div>
 
-                <!-- burger-menu -->
-                 <button id="open-mobile-menu">Open</button>
-
+                <button id="open-mobile-menu" class="burger-btn" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
 
                 <div class="mobile-wrapper">
-                    <button id='close-mobile-menu'>Close</button>
+                    <div class="close-button-wrapper">
+                        <button id="close-mobile-menu" class="close-btn" aria-label="Close menu">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
                     <div class="header__mobile-categories" id='mobile-menu'>
                         <nav class="category-mobile-nav">
                             <ul class="category-mobile-list">
