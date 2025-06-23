@@ -1,6 +1,7 @@
 @use "./variables.scss" as *;
 
 .header {
+    position: relative;
     background-color: $header-color;
     padding: 30px;
 
@@ -8,12 +9,38 @@
         width: 300px;
         margin-left: 50px;
     }
+}
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $body-overlay;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 100;
+    display: none;
+}
+
+.overlay-visible {
+    display: block;
+}
+
+.body-scroll-lock {
+    overflow: hidden;
 }
 
 .header .container {
     display: flex;
     align-items: center;
+}
+
+#main-menu {
+    @media screen and (max-width: 999px) {
+        display: none;
+    }
 }
 
 .category-list {
@@ -22,4 +49,24 @@
     font-size: 18px;
     color: $text-grey-color;
     text-transform: uppercase;
+}
+
+#open-mobile-menu {
+    @media screen and (min-width: 998.9px) {
+        display: none;
+    }
+}
+
+.mobile-wrapper {
+    position: absolute;
+    height: 100dvh;
+    right: 0%;
+    top: 0;
+    padding: 24px;
+    z-index: 1000;
+    display: none;
+}
+
+.mobile-wrapper.menu-visible {
+    display: block;
 }

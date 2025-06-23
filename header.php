@@ -24,7 +24,7 @@
                 endif;
                 ?>
 
-                <div class="header__categories">
+                <div class="header__categories" id='main-menu'>
                     <nav class="category-nav">
                         <ul class="category-list">
                             <?php
@@ -39,6 +39,30 @@
                             ?>
                         </ul>
                     </nav>
+                </div>
+
+                <!-- burger-menu -->
+                 <button id="open-mobile-menu">Open</button>
+
+
+                <div class="mobile-wrapper">
+                    <button id='close-mobile-menu'>Close</button>
+                    <div class="header__mobile-categories" id='mobile-menu'>
+                        <nav class="category-mobile-nav">
+                            <ul class="category-mobile-list">
+                                <?php
+                                wp_list_categories([
+                                    'title_li' => '',
+                                    'show_option_none' => '',
+                                    'hide_empty' => false,
+                                    'orderby' => 'name',
+                                    'order' => 'ASC',
+                                    'exclude' => get_cat_ID('Uncategorized'),
+                                ]);
+                                ?>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
 
             </div>
