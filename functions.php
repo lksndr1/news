@@ -1,7 +1,7 @@
 <?php
 
 function my_theme_enqueue_scripts() {
-  wp_enqueue_style('main-styles', get_template_directory_uri() . '/dist/css/style.css');
+  wp_enqueue_style('main-styles', get_template_directory_uri() . '/dist/css/main.css');
   
   wp_enqueue_script('main-scripts', get_template_directory_uri() . '/dist/js/main.js', [], false, true);
 }
@@ -55,3 +55,10 @@ function get_first_image_from_content() {
 
     return false;
 }
+
+function custom_posts_per_page($query) {
+    if ($query->is_main_query() && !is_admin()) {
+        $query->set('posts_per_page', -1);
+    }
+}
+add_action('pre_get_posts', 'custom_posts_per_page');

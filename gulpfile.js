@@ -17,11 +17,12 @@ const paths = {
 };
 
 function styles() {
-  return gulp.src(paths.scss)
+  return gulp.src('./src/scss/main.scss')
     .pipe(sourcemaps.init())
     .pipe(sassCompiler().on('error', sassCompiler.logError))
     .pipe(autoprefixer())
     .pipe(cleanCSS())
+    .pipe(concat('main.css'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.cssOutput));
 }

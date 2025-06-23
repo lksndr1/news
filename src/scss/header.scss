@@ -1,5 +1,25 @@
-@use './variables';
+@use "./variables.scss" as *;
 
-header {
-    background-color: yellow;
+.header {
+    background-color: $header-color;
+    padding: 30px;
+
+    &__logo {
+        width: 300px;
+        margin-left: 50px;
+    }
+
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+}
+
+.category-list {
+    display: flex;
+    gap: 30px;
+    font-size: 18px;
+    color: $text-grey-color;
+    text-transform: uppercase;
 }
