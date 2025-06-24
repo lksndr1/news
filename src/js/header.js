@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuWrapper = document.querySelector('.mobile-wrapper');
     const closeButton = document.getElementById('close-mobile-menu');
     const overlay = document.getElementById('menu-overlay');
-
+    const navLinks = document.querySelectorAll('.category-list a');
 
     function openMenu() {
         menuWrapper.classList.add('menu-visible');

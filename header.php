@@ -20,7 +20,9 @@
                 $logo = get_field('site_logo', 'option');
 
                 if ($logo):
+                    echo '<a href="' . esc_url(home_url('/')) . '">';
                     echo '<img class="header__logo" src="' . esc_url($logo['url']) . '" alt="' . esc_attr($logo['alt']) . '">';
+                    echo '</a>';
                 endif;
                 ?>
 

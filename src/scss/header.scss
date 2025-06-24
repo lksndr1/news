@@ -51,6 +51,14 @@
     text-transform: uppercase;
 }
 
+.category-list a {
+    transition: color 0.3s ease;
+}
+
+.category-list a:hover {
+    color: $hover-color;
+}
+
 #open-mobile-menu {
     position: absolute;
     right: 30px;
