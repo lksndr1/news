@@ -2,6 +2,32 @@
 @use "./header.scss";
 @use "./footer.scss";
 
-body {
-    color: red;
+.post-item {
+    display: flex;
+    padding: 24px 0;
+
+    img {
+        margin-right: 24px;
+    }
+
+    &__text {
+        display: block;
+    }
+
+    &__title {
+        transition: color 0.3s ease;
+    }
+
+    &__title:hover {
+        color: $hover-color;
+    }
+
+    &__meta a {
+        margin: 0 8px;
+        transition: color 0.3s ease;
+    }
+
+    &__meta a:hover {
+        color: $hover-color;
+    }
 }
