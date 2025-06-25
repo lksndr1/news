@@ -3,7 +3,6 @@
     <div class="container">
 
         <?php
-        // Перший запит — 4 перших пости
         $args = array(
             'post_type' => 'post',
             'posts_per_page' => 4,
@@ -48,7 +47,6 @@
         <div class="vertical-and-form">
             <div class="vertical-posts">
                 <?php
-                // Другий запит — решта постів
                 $args_vertical = array(
                     'post_type' => 'post',
                     'posts_per_page' => -1,

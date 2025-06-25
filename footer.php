@@ -9,7 +9,7 @@
                     endif;
                     ?>
 
-                    <div>
+                    <div class="footer__text-wrapper">
                         <?php
                         $disclaimer = get_field('disclaimer', 'option');
                         if ($disclaimer) {
@@ -17,6 +17,8 @@
                         }
                         ?>
                         <p>Copyright &copy;<?php echo date("Y"); ?> All Rights Reserved.</p>
+                        <a href="/privacy-policy">Privacy Policy</a> | 
+                        <a href="/terms-conditions">Terms & Conditions</a>
                     </div>
                 </div>
             </div>

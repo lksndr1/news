@@ -1,7 +1,7 @@
 @use "./variables.scss" as *;
 
 .footer {
-    font-size: 20px;
+    font-size: 12px;
 
     &__wrapper {
         display: flex;
@@ -17,6 +17,14 @@
         width: 300px;
         object-fit: contain;
         margin: 0 auto;
+    }
+
+    &__text-wrapper a {
+        transition: color 0.3s ease;
+    }
+
+    &__text-wrapper a:hover {
+        color: $hover-color;
     }
 
     &__disclaimer {
