@@ -2,6 +2,30 @@
 @use "./header.scss";
 @use "./footer.scss";
 
+.posts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.post-item.horizontal {
+    width: calc(25% - 15px);
+    position: relative;
+
+    .post-item__text {
+        position: absolute;
+        bottom: 30px;
+        left: 10px;
+        font-size: 14px;
+        color: white;
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.7));
+    }
+}
+
+.post-item.vertical {
+    width: 100%;
+}
+
 .post-item {
     display: flex;
     padding: 24px 0;
@@ -30,4 +54,27 @@
     &__meta a:hover {
         color: $hover-color;
     }
+}
+
+.vertical-and-form {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.vertical-posts {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-block {
+    flex: 1;
+    max-width: 400px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
