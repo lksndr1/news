@@ -3,11 +3,11 @@
 .header {
     position: relative;
     background-color: $header-color;
-    padding: 30px;
+    padding: 20px;
 
     &__logo {
         width: 300px;
-        margin-left: 50px;
+        margin-right: 30px;
     }
 }
 
@@ -45,7 +45,7 @@
 
 .category-list {
     display: flex;
-    gap: 30px;
+    gap: 40px;
     font-size: 18px;
     color: $text-grey-color;
     text-transform: uppercase;
