@@ -16,24 +16,24 @@
         <?php if ( $query_horizontal->have_posts() ) : ?>
             <div class="posts-grid">
                 <?php while ( $query_horizontal->have_posts() ) : $query_horizontal->the_post(); ?>
-                    <div class="post-item horizontal">
+                    <div class="post-item-horizontal">
                         <a href="<?php the_permalink(); ?>">
                             <?php if ( has_post_thumbnail() ) : ?>
-                                <div class="post-item__thumbnail">
+                                <div class="post-item-horizontal__thumbnail">
                                     <?php the_post_thumbnail('medium'); ?>
                                 </div>
                             <?php else :
                                 $first_img = get_first_image_from_content();
                                 if ( $first_img ) : ?>
-                                    <div class="post-item__thumbnail">
+                                    <div class="post-item-horizontal__thumbnail">
                                         <img src="<?php echo esc_url($first_img); ?>" alt="<?php the_title_attribute(); ?>">
                                     </div>
                                 <?php endif;
                             endif; ?>
 
-                            <div class="post-item__text">
-                                <h2 class="post-item__title"><?php the_title(); ?></h2>
-                                <div class="post-item__meta">
+                            <div class="post-item-horizontal__text">
+                                <h2 class="post-item-horizontal__title"><?php the_title(); ?></h2>
+                                <div class="post-item-horizontal__meta">
                                     <small><?php the_date(); ?></small>
                                     <span><?php the_category(', '); ?></span>
                                 </div>
@@ -59,24 +59,24 @@
 
                 if ( $query_vertical->have_posts() ) :
                     while ( $query_vertical->have_posts() ) : $query_vertical->the_post(); ?>
-                        <div class="post-item vertical">
+                        <div class="post-item-vertical">
                             <a href="<?php the_permalink(); ?>">
                                 <?php if ( has_post_thumbnail() ) : ?>
-                                    <div class="post-item__thumbnail">
+                                    <div class="post-item-vertical__thumbnail">
                                         <?php the_post_thumbnail('medium'); ?>
                                     </div>
                                 <?php else :
                                     $first_img = get_first_image_from_content();
                                     if ( $first_img ) : ?>
-                                        <div class="post-item__thumbnail">
+                                        <div class="post-item-vertical__thumbnail">
                                             <img src="<?php echo esc_url($first_img); ?>" alt="<?php the_title_attribute(); ?>">
                                         </div>
                                     <?php endif;
                                 endif; ?>
 
-                                <div class="post-item__text">
-                                    <h2 class="post-item__title"><?php the_title(); ?></h2>
-                                    <div class="post-item__meta">
+                                <div class="post-item-vertical__text">
+                                    <h2 class="post-item-vertical__title"><?php the_title(); ?></h2>
+                                    <div class="post-item-vertical__meta">
                                         <small><?php the_date(); ?></small>
                                         <span><?php the_category(', '); ?></span>
                                     </div>

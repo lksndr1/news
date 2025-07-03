@@ -8,11 +8,11 @@
     gap: 20px;
 }
 
-.post-item.horizontal {
+.post-item-horizontal {
     width: calc(25% - 15px);
     position: relative;
 
-    .post-item__text {
+    &__text {
         position: absolute;
         bottom: 30px;
         left: 10px;
@@ -42,15 +42,10 @@
     }
 }
 
-.post-item.vertical {
-    width: 100%;
-}
-
-.post-item {
+.post-item-horizontal,
+.post-item-vertical {
     display: flex;
-    gap: 24px;
-
-
+    gap: 54px;
 
     &__text {
         display: block;
@@ -90,6 +85,13 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.post-item-vertical {
+
+    &__thumbnail {
+        width: 300px;
+    }
 }
 
 .form-block {
