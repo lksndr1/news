@@ -12,6 +12,16 @@
     width: calc(25% - 15px);
     position: relative;
 
+    &__thumbnail {
+        height: 300px;
+    }
+
+    &__thumbnail img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
     &__text {
         position: absolute;
         bottom: 30px;
