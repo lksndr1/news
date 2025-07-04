@@ -5,7 +5,7 @@
         <?php
         $args = array(
             'post_type' => 'post',
-            'posts_per_page' => 4,
+            'posts_per_page' => -1,
             'cat' => get_queried_object_id(),
             'orderby' => 'date',
             'order' => 'DESC'
@@ -15,50 +15,54 @@
 
         <?php if ( $query_horizontal->have_posts() ) : ?>
             <div class="posts-grid">
-                <?php while ( $query_horizontal->have_posts() ) : $query_horizontal->the_post(); ?>
-                    <div class="post-item-horizontal">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php if ( has_post_thumbnail() ) : ?>
-                                <div class="post-item-horizontal__thumbnail">
-                                    <?php the_post_thumbnail('medium'); ?>
-                                </div>
-                            <?php else :
-                                $first_img = get_first_image_from_content();
-                                if ( $first_img ) : ?>
-                                    <div class="post-item-horizontal__thumbnail">
-                                        <img src="<?php echo esc_url($first_img); ?>" alt="<?php the_title_attribute(); ?>">
-                                    </div>
-                                <?php endif;
-                            endif; ?>
+                <?php $post_count = 0; ?>
 
-                            <div class="post-item-horizontal__text">
-                                <h2 class="post-item-horizontal__title"><?php the_title(); ?></h2>
-                                <div class="post-item-horizontal__meta">
-                                    <small><?php the_date(); ?></small>
-                                    <span><?php the_category(', '); ?></span>
+                <?php while ( $query_horizontal->have_posts() ) : $query_horizontal->the_post(); $post_count++; ?>
+                    <?php if ( $post_count <= 4 ) : ?>
+                        <div class="post-item-horizontal">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php if ( has_post_thumbnail() ) : ?>
+                                    <div class="post-item-horizontal__thumbnail">
+                                        <?php the_post_thumbnail('medium'); ?>
+                                    </div>
+                                <?php else :
+                                    $first_img = get_first_image_from_content();
+                                    if ( $first_img ) : ?>
+                                        <div class="post-item-horizontal__thumbnail">
+                                            <img src="<?php echo esc_url($first_img); ?>" alt="<?php the_title_attribute(); ?>">
+                                        </div>
+                                    <?php endif;
+                                endif; ?>
+
+                                <div class="post-item-horizontal__text">
+                                    <h2 class="post-item-horizontal__title"><?php the_title(); ?></h2>
+                                    <div class="post-item-horizontal__meta">
+                                        <small><?php the_date(); ?></small>
+                                        <span><?php the_category(', '); ?></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
         <?php endif; ?>
 
         <div class="vertical-and-form">
             <div class="vertical-posts">
-                <?php
-                $args_vertical = array(
-                    'post_type' => 'post',
-                    'posts_per_page' => -1,
-                    'offset' => 4,
-                    'cat' => get_queried_object_id(),
-                    'orderby' => 'date',
-                    'order' => 'DESC'
-                );
-                $query_vertical = new WP_Query($args_vertical);
-
-                if ( $query_vertical->have_posts() ) :
-                    while ( $query_vertical->have_posts() ) : $query_vertical->the_post(); ?>
+                    <?php
+                    $args_vertical = array(
+                        'post_type' => 'post',
+                        'posts_per_page' => 50,
+                        'offset' => 4,
+                        'cat' => get_queried_object_id(),
+                        'orderby' => 'date',
+                        'order' => 'DESC'
+                    );
+                    $post_query = new WP_Query( $args_vertical );
+                    if ( $post_query->have_posts() ) :
+                        while ( $post_query->have_posts() ) : $post_query->the_post();
+                    ?>
                         <div class="post-item-vertical">
                             <a href="<?php the_permalink(); ?>">
                                 <?php if ( has_post_thumbnail() ) : ?>
@@ -83,11 +87,8 @@
                                 </div>
                             </a>
                         </div>
-                    <?php endwhile;
-                    wp_reset_postdata();
-                endif;
-                ?>
-            </div>
+                    <?php endwhile; wp_reset_postdata(); endif; ?>
+                </div>
 
             <div class="form-block">
                 <?php echo do_shortcode('[fluentform id="2"]'); ?>
