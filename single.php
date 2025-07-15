@@ -7,7 +7,7 @@ if ( have_posts() ) :
     <main>
         <div class="container">
             <div class="vertical-and-form">
-                <article>
+                <article class='vertical-posts'>
                     <h1><?php the_title(); ?></h1>
                     <p class="post-meta">
                         <?php echo get_the_date(); ?> |
