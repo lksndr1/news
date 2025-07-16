@@ -27,8 +27,8 @@
                 ?>
 
                 <div class="header__categories" id='main-menu'>
-                    <nav class="category-nav">
-                        <ul class="category-list">
+                    <nav class="header__category-nav">
+                        <ul class="header__category-list">
                             <?php
                             wp_list_categories([
                                 'title_li' => '',
@@ -42,6 +42,8 @@
                         </ul>
                     </nav>
                 </div>
+
+                <div class="header__categories-preview"></div>
 
                 <button id="open-mobile-menu" class="burger-btn" aria-label="Open menu">
                     <span></span>

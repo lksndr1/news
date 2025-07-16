@@ -27,3 +27,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+jQuery(document).ready(function ($) {
+    $('.header__category-list li a').hover(
+        function () {
+            var cat_id = $(this).parent().attr('class').match(/cat-item-(\d+)/)[1];
+
+            $.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'get_category_posts',
+                    category_id: cat_id
+                },
+                success: function (response) {
+                    $('.header__categories-preview').html(response);
+                }
+            });
+        },
+        function () {
+            $('.header__categories-preview').empty();
+        }
+    );
+
+    $('.header__categories').mouseleave(function () {
+        $('.header__categories-preview').empty();
+    });
+});

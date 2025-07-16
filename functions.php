@@ -3,7 +3,9 @@
 function my_theme_enqueue_scripts() {
   wp_enqueue_style('main-styles', get_template_directory_uri() . '/dist/css/main.css');
   
-  wp_enqueue_script('main-scripts', get_template_directory_uri() . '/dist/js/main.js', [], false, true);
+  wp_enqueue_script('main-scripts', get_template_directory_uri() . '/dist/js/main.js', array('jquery'), false, true);
+
+  wp_localize_script('main-scripts', 'ajaxurl', admin_url('admin-ajax.php'));
 }
 
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_scripts');
@@ -62,3 +64,32 @@ function custom_posts_per_page($query) {
     }
 }
 add_action('pre_get_posts', 'custom_posts_per_page');
+
+
+// posts-preview
+add_action('wp_ajax_get_category_posts', 'get_category_posts');
+add_action('wp_ajax_nopriv_get_category_posts', 'get_category_posts');
+
+function get_category_posts() {
+    $category_id = intval($_POST['category_id']);
+
+    $args = array(
+        'cat' => $category_id,
+        'posts_per_page' => 5,
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post(); ?>
+            <div class="category-post">
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+            </div>
+        <?php endwhile;
+    else :
+        echo '<p>No posts in this category.</p>';
+    endif;
+
+    wp_reset_postdata();
+    wp_die();
+}
