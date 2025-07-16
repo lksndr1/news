@@ -9,6 +9,32 @@
         width: 300px;
         margin-right: 30px;
     }
+
+    &__category-list {
+        display: flex;
+        gap: 40px;
+        font-size: 18px;
+        color: $text-grey-color;
+        text-transform: uppercase;
+    }
+
+    &__category-list a {
+        transition: color 0.3s ease;
+    }
+
+    &__category-list a:hover {
+        color: $hover-color;
+    }
+
+    &__categories-preview {
+        position: absolute;
+        display: flex;
+        gap: 20px;
+        top: 144px;
+        left: 20px;
+        background-color: $background-color;
+        z-index: 200;
+    }
 }
 
 .overlay {
@@ -41,22 +67,6 @@
     @media screen and (max-width: 999px) {
         display: none;
     }
-}
-
-.category-list {
-    display: flex;
-    gap: 40px;
-    font-size: 18px;
-    color: $text-grey-color;
-    text-transform: uppercase;
-}
-
-.category-list a {
-    transition: color 0.3s ease;
-}
-
-.category-list a:hover {
-    color: $hover-color;
 }
 
 #open-mobile-menu {
