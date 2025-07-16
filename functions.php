@@ -82,8 +82,23 @@ function get_category_posts() {
 
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post(); ?>
-            <div class="category-post">
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+            <div class="header__category-post">
+                <a href="<?php the_permalink(); ?>">
+                    <?php if ( has_post_thumbnail() ) : ?>
+                        <div class="post-item-vertical__thumbnail">
+                            <?php the_post_thumbnail('medium'); ?>
+                        </div>
+                    <?php else :
+                        $first_img = get_first_image_from_content();
+                        if ( $first_img ) : ?>
+                            <div class="post-item-vertical__thumbnail">
+                                <img src="<?php echo esc_url($first_img); ?>" alt="<?php the_title_attribute(); ?>">
+                            </div>
+                        <?php endif;
+                    endif; ?>
+
+                    <?php the_title(); ?>
+                </a>
             </div>
         <?php endwhile;
     else :

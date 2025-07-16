@@ -25,6 +25,16 @@
     &__category-list a:hover {
         color: $hover-color;
     }
+
+    &__categories-preview {
+        position: absolute;
+        display: flex;
+        gap: 20px;
+        top: 144px;
+        left: 20px;
+        background-color: $background-color;
+        z-index: 200;
+    }
 }
 
 .overlay {
